@@ -1,5 +1,7 @@
 package ru.alishev.springcourse.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.alishev.springcourse.models.Person;
 
@@ -11,17 +13,14 @@ import java.util.List;
  */
 @Component
 public class PersonDAO {
-    private static int PEOPLE_COUNT;
-    private List<Person> people;
 
-    {
-        people = new ArrayList<>();
+    private final JdbcTemplate jdbcTemplate;
 
-        people.add(new Person(++PEOPLE_COUNT, "Tom", 24, "tom@mail.ru"));
-        people.add(new Person(++PEOPLE_COUNT, "Bob", 52, "bob@mail.ru"));
-        people.add(new Person(++PEOPLE_COUNT, "Mike", 18, "mike@yahoo.com"));
-        people.add(new Person(++PEOPLE_COUNT, "Katy", 34, "katy@gmail.com"));
+    @Autowired
+    public PersonDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
+
 
     public List<Person> index() {
         return people;

@@ -9,8 +9,8 @@ import javax.annotation.PreDestroy;
 /**
  * @author Neil Alishev
  */
-@Component
-@Scope("prototype")
+
+
 public class ClassicalMusic implements Music {
 
     @PostConstruct
