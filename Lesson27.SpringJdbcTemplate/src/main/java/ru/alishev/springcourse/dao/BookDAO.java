@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.alishev.springcourse.models.Book;
+import ru.alishev.springcourse.models.Person;
 
 import java.util.List;
 
@@ -25,4 +26,14 @@ public class BookDAO {
                 new BeanPropertyRowMapper<>(Book.class))
                 .stream().findAny().orElse(null);
     }
+    public void save(Book book) {
+        jdbcTemplate.update("INSERT INTO book(book_name, book_year) VALUES(?, ?)", book.getBook_name(),
+                book.getBook_year());
+    }
+    public void update(int id, Book updatedBook) {
+        jdbcTemplate.update("UPDATE book SET book_name=?, book_year=? WHERE book_id=?",  updatedBook.getBook_name(),
+                updatedBook.getBook_year(),id);
+    }
+    public void delete(int id) {jdbcTemplate.update("DELETE FROM book WHERE book_id=?", id); }
+
 }

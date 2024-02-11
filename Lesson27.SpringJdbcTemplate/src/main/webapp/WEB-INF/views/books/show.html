@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${'id: ' + book.getBook_id()}">VALUE</p>
+<p th:text="${book.getBook_name()}">VALUE</p>
+
+<a th:href="@{/books/{id}/edit(id=${book.getBook_id()})}">edit</a>
+
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getBook_id()})}">
+    <input type="submit" value="delete"/>
+</form>
+
+
+</body>
+</html>
