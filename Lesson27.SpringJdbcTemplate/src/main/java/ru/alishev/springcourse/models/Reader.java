@@ -11,6 +11,11 @@ public class Reader {
         this.reader_year = reader_year;
     }
 
+    public Reader(){
+
+    }
+
+
     public int getReader_id() {
         return reader_id;
     }
